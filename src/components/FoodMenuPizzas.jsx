@@ -1,34 +1,33 @@
-import { useContext, useState, useEffect } from "react"
-import { useNavigate, Link } from "react-router-dom"
-import { Col, Row, Card, Button } from "react-bootstrap"
-import { DataContext } from "../context/DataContext"
+import { useContext, useState, useEffect } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import { Col, Row, Card, Button } from "react-bootstrap";
+import { DataContext } from "../context/DataContext";
 
 const FoodMenuPizzas = () => {
-  const { pizzas, setPizzas, addToCart, CLP } = useContext(DataContext)
-  const [pizzaSelected, setPizzaSelected] = useState('')
+  const { pizzas, setPizzas, addToCart, CLP } = useContext(DataContext);
+  const [pizzaSelected, setPizzaSelected] = useState("");
 
   const getPizzas = async () => {
     try {
-      const response = await fetch("./pizzas.json")
+      const response = await fetch(`${import.meta.env.BASE_URL}pizzas.json`);
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`)
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
-      const data = await response.json()
-      setPizzas(data)
+      const data = await response.json();
+      setPizzas(data);
     } catch (error) {
-      console.error("Error fetching data: ", error)
-      alert("Error fetching data: " + error.message)
+      console.error("Error fetching data: ", error);
+      alert("Error fetching data: " + error.message);
     }
-  }
+  };
   useEffect(() => {
-    getPizzas()
-  }, [])
+    getPizzas();
+  }, []);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const handleNavigate = (pizzaId) => {
     navigate(`/pizzas/${pizzaId}/`);
   };
-
 
   return (
     <>
@@ -41,18 +40,34 @@ const FoodMenuPizzas = () => {
                   <Card.Img variant="top" src={pizza.img} height={200} />
                 </Link>
                 <Card.Body>
-                  <Card.Title className="text-capitalize"><h4>{pizza.name}</h4></Card.Title>
+                  <Card.Title className="text-capitalize">
+                    <h4>{pizza.name}</h4>
+                  </Card.Title>
                   <hr></hr>
                   <div className="d-flex flex-wrap justify-content-between align-items-center text-secondary text-capitalize">
-                    <div>🍕 {pizza.ingredients.join(', ')}.
-                      <Button className="bg-secondary rounded-1 px-1 py-0 fs-6" type="submit" value={pizza.id} onClick={() => handleNavigate(pizza.id)}>Saber más</Button>
+                    <div>
+                      🍕 {pizza.ingredients.join(", ")}.
+                      <Button
+                        className="bg-secondary rounded-1 px-1 py-0 fs-6"
+                        type="submit"
+                        value={pizza.id}
+                        onClick={() => handleNavigate(pizza.id)}
+                      >
+                        Saber más
+                      </Button>
                     </div>
                   </div>
                 </Card.Body>
                 <Card.Body className="d-flex justify-content-between align-items-center">
-                  <Card.Text className="fw-bolder fs-2 m-0">{CLP.format(pizza.price)}
+                  <Card.Text className="fw-bolder fs-2 m-0">
+                    {CLP.format(pizza.price)}
                   </Card.Text>
-                  <Button className="btn btn--secondary" onClick={() => addToCart({ id: pizza.id, type: 'pizza' })}><i className="bi bi-basket pe-2"></i> Agregar</Button>
+                  <Button
+                    className="btn btn--secondary"
+                    onClick={() => addToCart({ id: pizza.id, type: "pizza" })}
+                  >
+                    <i className="bi bi-basket pe-2"></i> Agregar
+                  </Button>
                 </Card.Body>
               </Card>
             </Col>
@@ -60,7 +75,7 @@ const FoodMenuPizzas = () => {
         </Row>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default FoodMenuPizzas
+export default FoodMenuPizzas;

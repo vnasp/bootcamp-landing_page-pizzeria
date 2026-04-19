@@ -1,7 +1,7 @@
-import OpeningHours from "./Addons-OpeningHours"
-import CallUs from "./Addons-CallUs"
-import SocialMedia from "./Addons-SocialMedia"
-import { Row, Col, Image } from "react-bootstrap"
+import OpeningHours from "./Addons-OpeningHours";
+import CallUs from "./Addons-CallUs";
+import SocialMedia from "./Addons-SocialMedia";
+import { Row, Col, Image } from "react-bootstrap";
 
 const FooterPage = () => {
   return (
@@ -18,17 +18,25 @@ const FooterPage = () => {
             </Col>
             <Col className="mt-lg-4 pt-lg-4">
               <SocialMedia />
-              <div className="my-2 my-lg-4"><span className="badge-red p-1 me-2">UX/UI</span> Natalia Muñoz</div>
-              <div className="mb-2"><span className="badge-red p-1 me-2">FRONTEND</span> Valentina Muñoz</div>
+              <div className="my-2 my-lg-4">
+                <span className="badge-red p-1 me-2">UX/UI</span> Natalia Muñoz
+              </div>
+              <div className="mb-2">
+                <span className="badge-red p-1 me-2">FRONTEND</span> Valentina
+                Muñoz
+              </div>
             </Col>
             <Col className="mt-4 pt-4 d-none d-lg-block">
-              <Image src="./assets/img/logo_white.png" width={200} />
+              <Image
+                src={`${import.meta.env.BASE_URL}assets/img/logo_white.png`}
+                width={200}
+              />
             </Col>
           </Row>
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default FooterPage
+export default FooterPage;

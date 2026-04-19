@@ -1,30 +1,32 @@
-import { useContext, useEffect } from "react"
-import { Form, Col, Row, Card, Button } from "react-bootstrap"
-import { DataContext } from "../context/DataContext"
+import { useContext, useEffect } from "react";
+import { Form, Col, Row, Card, Button } from "react-bootstrap";
+import { DataContext } from "../context/DataContext";
 
 const FoodMenuSideDishes = () => {
-  const { sideDishes, setSideDishes, addToCart, CLP } = useContext(DataContext)
+  const { sideDishes, setSideDishes, addToCart, CLP } = useContext(DataContext);
 
   const getSideDishes = async () => {
     try {
-      const response = await fetch("./sidedishes.json")
+      const response = await fetch(
+        `${import.meta.env.BASE_URL}sidedishes.json`,
+      );
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`)
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
-      const data = await response.json()
-      setSideDishes(data)
+      const data = await response.json();
+      setSideDishes(data);
     } catch (error) {
-      console.error("Error fetching data: ", error)
-      alert("Error fetching data: " + error.message)
+      console.error("Error fetching data: ", error);
+      alert("Error fetching data: " + error.message);
     }
-  }
+  };
   useEffect(() => {
-    getSideDishes()
-  }, [])
+    getSideDishes();
+  }, []);
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-  }
+    e.preventDefault();
+  };
 
   return (
     <>
@@ -36,26 +38,38 @@ const FoodMenuSideDishes = () => {
                 <Card className="card-custom custom-shadow border-0 mx-2 mx-lg-0">
                   <Card.Img variant="top" src={sidedish.img} height={200} />
                   <Card.Body>
-                    <Card.Title className="text-capitalize"><h4>{sidedish.name}</h4></Card.Title>
+                    <Card.Title className="text-capitalize">
+                      <h4>{sidedish.name}</h4>
+                    </Card.Title>
                     <hr></hr>
-                    <div className="d-flex text-secondary"> 🍟 {sidedish.desc}
+                    <div className="d-flex text-secondary">
+                      {" "}
+                      🍟 {sidedish.desc}
                     </div>
                   </Card.Body>
                   <Card.Body className="d-flex justify-content-between align-items-center">
-                    <Card.Text className="fw-bolder fs-2 m-0">{CLP.format(sidedish.price)}
+                    <Card.Text className="fw-bolder fs-2 m-0">
+                      {CLP.format(sidedish.price)}
                     </Card.Text>
-                    <Button className="btn btn--secondary" type="button" value={sidedish.id} onClick={() => addToCart({ id: sidedish.id, type: 'sidedish' })}><i className="bi bi-basket pe-2"></i> Agregar</Button>
+                    <Button
+                      className="btn btn--secondary"
+                      type="button"
+                      value={sidedish.id}
+                      onClick={() =>
+                        addToCart({ id: sidedish.id, type: "sidedish" })
+                      }
+                    >
+                      <i className="bi bi-basket pe-2"></i> Agregar
+                    </Button>
                   </Card.Body>
-
                 </Card>
               </Col>
-
             ))}
           </Row>
-        </Form >
+        </Form>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default FoodMenuSideDishes
+export default FoodMenuSideDishes;
