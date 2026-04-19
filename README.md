@@ -1,29 +1,37 @@
-# Pizzería Gourmet Mamma Mia 🍕
+# Pizzería Mamma Mia
 
-Bienvenido al repositorio de la Pizzería Gourmet Mamma Mia, un sitio web interactivo que permite a los usuarios explorar nuestro menú, agregar pizzas a su carrito, aplicar cupones de descuento y acumular puntos de recompensa.
+Proyecto desarrollado como desafío del **Bootcamp Full Stack Developer JS de DesafioLATAM**. Sitio web interactivo de una pizzería que permite explorar el menú, agregar productos al carrito, aplicar cupones de descuento y acumular puntos de recompensa.
 
-## Características 🌟
+> **Nota:** Este es un proyecto académico de maquetación, no un e-commerce funcional.
 
-- **Agregar al Carrito**: Interfaz intuitiva para seleccionar pizzas y agregarlas a tu carrito de compras.
-- **Cupones de Descuento**: Aplica cupones para obtener descuentos en tus pedidos.
-- **Puntos de Recompensa**: Gana puntos con cada compra que puedes canjear por recompensas.
-- **Locales de la Tienda**: Encuentra ubicaciones  fácilmente con un mapa interactivo proporcionado por Leaflet.
-- **Autenticación de Usuarios**: Regístrate e inicia sesión con un pop-up interactivo gracias a SweetAlert2.
-- **Diseño Responsivo**: Navega desde cualquier dispositivo gracias a Bootstrap y CSS personalizado.
+## Vista previa
 
+[Ver en GitHub Pages](https://vnasp.github.io/bootcamp-landing_page-pizzeria/)
 
-## Tecnologías Utilizadas 💻
+## Tecnologías
 
-Este proyecto está construido utilizando las siguientes tecnologías y bibliotecas:
+- React 18 con React Router
+- Context API para estado global
+- Vite como bundler
+- Bootstrap 5 + React Bootstrap
+- Leaflet para mapa de locales
+- SweetAlert2 para modales interactivos
+- Datos de menú en archivos JSON
 
-- **ReactJS**: Se utilizó `useState`, `useRef` para manejar el estado y referencias.
-  - **React Router**: Para la navegación dentro de la aplicación (`NavLink`, `useNavigate`, `useParams`).
-  - **React Context API**: Se usó `useContext` para gestionar el estado global de la aplicación.
-  - **Archivos JSON**: Para almacenar datos de productos del menú.
-- **SweetAlert2**: Para pop-ups interactivos, como el formulario de inicio de sesión.
-- **Leaflet**: Para mostrar el mapa de ubicaciones de las tiendas.
-- **Bootstrap y CSS Vanilla**: Para estilizar el sitio web manteniendo un diseño responsivo y atractivo.
+## Estructura del proyecto
 
-## Despliegue 🚀
+```
+src/
+├── components/   → Navigation, FoodMenu*, Cart*, Addons*, Footer
+├── context/      → DataContext (estado global)
+├── views/        → HomePage, MenuPage, CartPage, PizzaPage, etc.
+├── App.jsx       → Rutas y layout principal
+└── main.jsx      → Punto de entrada
+```
 
-El sitio web está desplegado y accesible en: https://vnasp.github.io/restaurant-frontend-react-user/
+## Desarrollo local
+
+```bash
+npm install
+npm run dev
+```
